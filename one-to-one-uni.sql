@@ -2,7 +2,7 @@ use hibernate_mappings;
 drop table if exists instructor_detail;
 create table instructor_detail(
 	id int auto_increment not null,
-    youtube_profile varchar(128) default null,
+    youtube_channel varchar(128) default null,
     hobby varchar(45) default null,
     
     primary key (id) 
