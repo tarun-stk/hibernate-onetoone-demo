@@ -43,6 +43,10 @@ public class InstructorDetailController {
 	
 	@DeleteMapping("/{theId}")
 	public void deleteById(@PathVariable int theId) {
+//		As we've onetoone mapping from both the sides and we don't want to delete isntructor table
+//		when deleting instructorDetial row we've to first detach the instructor detail from that particular 
+//		instructor row, which will allow us to then delete the instructor detail row.
+//		If not done this way the record will not be deleted
 		Optional<InstructorDetail> findById = instructorDetailRepository.findById(theId);
 		if(findById.isPresent()) {
 			Instructor theInstructor = findById.get().getInstructor();

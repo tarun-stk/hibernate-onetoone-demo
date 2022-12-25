@@ -25,6 +25,13 @@ public class Instructor {
 	
 	private String email;
 	
+//	Adding instructor_detail_id as foreign key column to the instructor table.
+//	cascade=CascadeType.ALL --> making changes to instructor makes changes to all the instructor details table
+//	Like updating --> also updates instructorDetail
+//	deleteing --> also deletes the related instructorDetail
+//	save --> also saves instructor detail and attaches the instructor detail's primary key as foreign key to the instructor table.
+//	@JoinColumn(name="instructor_detail_id", referencedColumnName = "id")
+//	 we're joining the instructor_detail_id column to the instructor table.
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="instructor_detail_id", referencedColumnName = "id")
 	private InstructorDetail instructorDetail;

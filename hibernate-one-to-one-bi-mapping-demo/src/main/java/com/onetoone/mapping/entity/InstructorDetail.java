@@ -25,7 +25,14 @@ public class InstructorDetail {
 	@Column(name="hobby")
 	private String hobby;
 	
+//	When we do OneToOne from both sides of tables it indicated that this is onetoone bi-directional mapping.
 //	mappedBy indicates that instructorDetail is mapped from Instructor entity.
+//	& instructorDetail is the field in Instructor entity and should be same as how declared in Instructor entity.
+//	cascadeTypes->
+//	we're doing all the operations on instructor except REMOVE,
+//	means we update the instructor table for every change in instructorDetail table except the fact that
+//	whenever we delete instructor detail row we dont delete associated instructor table's row
+//	because we've not aded CascadeType.REMOVE.
 	@OneToOne(mappedBy="instructorDetail", 
 			cascade = {CascadeType.DETACH,
 			CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
