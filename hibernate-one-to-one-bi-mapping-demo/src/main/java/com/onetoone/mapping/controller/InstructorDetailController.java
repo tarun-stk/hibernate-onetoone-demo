@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.onetoone.mapping.entity.Instructor;
 import com.onetoone.mapping.entity.InstructorDetail;
 import com.onetoone.mapping.repository.InstructorDetailRepository;
 
@@ -42,6 +43,13 @@ public class InstructorDetailController {
 	
 	@DeleteMapping("/{theId}")
 	public void deleteById(@PathVariable int theId) {
+		Optional<InstructorDetail> findById = instructorDetailRepository.findById(theId);
+		if(findById.isPresent()) {
+			Instructor theInstructor = findById.get().getInstructor();
+			if(theInstructor != null) {
+				theInstructor.setInstructorDetail(null);
+			}
+		}
 		instructorDetailRepository.deleteById(theId);
 	}
 

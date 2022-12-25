@@ -17,9 +17,8 @@ create table instructor(
     instructor_detail_id int default null,
     
     key fk_detail_idx (instructor_detail_id),
-    constraint fk_detail foreign key (instructor_detail_id) 
-    references instructor_detail (id) 
-    on delete no action on update no action,
+    foreign key (instructor_detail_id) 
+    references instructor_detail (id), 
     primary key (id) 
 );
 
